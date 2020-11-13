@@ -1,3 +1,4 @@
 .idea/
 
 scripts/set_env.sh
+deploy/config-env-map.yml

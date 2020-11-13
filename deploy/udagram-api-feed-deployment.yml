@@ -26,3 +26,49 @@ spec:
             limits:
               memory: "1024Mi"
               cpu: "500m"
+          env:
+          - name: URL
+            valueFrom:
+              configMapKeyRef:
+                name: config-env
+                key: URL
+          - name: JWT_SECRET
+            valueFrom:
+              configMapKeyRef:
+                name: config-env
+                key: JWT_SECRET
+          - name: AWS_BUCKET
+            valueFrom:
+              configMapKeyRef:
+                name: config-env
+                key: AWS_BUCKET
+          - name: AWS_PROFILE
+            valueFrom:
+              configMapKeyRef:
+                name: config-env
+                key: AWS_PROFILE
+          - name: AWS_REGION
+            valueFrom:
+              configMapKeyRef:
+                name: config-env
+                key: AWS_REGION
+          - name: POSTGRES_USERNAME
+            valueFrom:
+              configMapKeyRef:
+                name: config-env
+                key: POSTGRES_USERNAME
+          - name: POSTGRESS_PASSWORD
+            valueFrom:
+              configMapKeyRef:
+                name: config-env
+                key: POSTGRESS_PASSWORD
+          - name: POSTGRESS_DB
+            valueFrom:
+              configMapKeyRef:
+                name: config-env
+                key: POSTGRESS_DB
+          - name: POSTGRESS_HOST
+            valueFrom:
+              configMapKeyRef:
+                name: config-env
+                key: POSTGRESS_HOST
