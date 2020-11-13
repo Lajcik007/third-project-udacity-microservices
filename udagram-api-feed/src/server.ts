@@ -35,6 +35,10 @@ import {V0_FEED_MODELS} from './controllers/v0/model.index';
     res.send( '/api/v0/' );
   } );
 
+  app.get('/health', async (req, res): Promise<void> => {
+    res.status(200).send('ok');
+  });
+
 
   // Start the Server
   app.listen( port, () => {
