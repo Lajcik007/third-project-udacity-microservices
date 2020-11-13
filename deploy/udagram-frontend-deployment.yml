@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    service: udagram-frontend-app
+  name: udagram-frontend-app
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        service: udagram-frontend-app
+        api: external
+    spec:
+      containers:
+        - image: lajcik007/udagram-frontend
+          name: udagram-frontend-app
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "1024Mi"
+              cpu: "500m"
+      restartPolicy: Always
