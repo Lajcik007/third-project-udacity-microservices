@@ -1,0 +1,26 @@
+language: node_js
+node_js:
+  - 13
+
+services:
+  - docker
+
+# Pre-testing installs
+install:
+  - echo "nothing needs to be installed"
+
+# Scripts to be run such as tests
+before_script:
+  - echo "no tests"
+
+script:
+  - bash scripts/deploy-feed.sh
+  - bash scripts/deploy-user.sh
+  - bash scripts/deploy-front.sh
+
+# Tasks to perform after the process is successful. Formatting the Docker username and password as below enables you to programmatically log in without having the password exposed in logs.
+after_success:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push lajcik007/udagram-api-feed
+  - docker push lajcik007/udagram-api-user
+  - docker push lajcik007/udagram-frontend
